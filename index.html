@@ -1,50 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <title>My first Vue Project</title>
-</head>
-<body>
-  <div id="app">
-
-  </div>
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script>
-  new Vue({
-    el: '#app',
-    template: ` 
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <title>My first Vue Project</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      new Vue({
+        el: "#app",
+        template: ` 
     <div class="container">
-  <h1>Comments</h1>
-  <hr />
+      <h1>Comments</h1>
+      <hr />
 
   <div class="form-todo form-group">
     <p>
-      <input type="text" placeholder="name" name='author' class='form-control'>
+      <input v-model='name' type="text" placeholder="Name" name='author' class='form-control'>
     </p>
     <p>
-      <textarea name="message" class='form-control'>
+      <textarea v-model='message' name="message" class='form-control' placeholder='Your message here'>
       </textarea>
     </p>
-    <button class="btn btn-primary">Comment</button>
+    <button v-on:click='addComment' class="btn btn-primary">Comment</button>
   </div>
   <div class="list-group">
-    <div class="list-group-item">
+    <div class="list-group-item" v-for='(comment, idx) in commentsArray'>
       <span class="comment_author">
-        Author: <strong>Mike</strong>
+        Author: <strong>{{ comment.name }}</strong>
       </span>
-      <p>Test message</p>
+      <p>{{ comment.message }}</p>
       <div>
-        <a href="a" title='Delete'>Delete</a>
+        <a v-on:click.prevent='deleteComment(idx)' href="#" title='Delete'>Delete</a>
       </div>
     </div>
   </div>
   <hr />
 </div>
-    `
-    
-  })
-</script>
-</body>
+    `,
+        data() {
+          return {
+            commentsArray: [],
+            name: '',
+            message: ''
+          };
+        },
+        methods: {
+          addComment(){
+            if (this.name.trim() === '' || this.message.trim() === ''){
+              return;
+            }
+            this.commentsArray.push({
+              name: this.name,
+              message: this.message
+            });
+            //To come back as a blank
+            this.name = '';
+            this.message = '';
+          },
+          deleteComment(idx){
+            this.commentsArray.splice(idx, 1);
+          }
+        }
+      });
+    </script>
+  </body>
 </html>
