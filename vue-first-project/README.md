@@ -1,5 +1,5 @@
 # Vue Comment App
-This is a responsive **Vue Comment** application developed with Vue.js.
+This is a responsive **Vue Comment** application developed with Vue.js. You can add as many comments about Vue.js and delete them if you want.
 
 ![](/vue-first-project/public/images/home.png)
 
