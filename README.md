@@ -3,24 +3,30 @@ This is a responsive **Vue Comment** application developed with Vue.js.
 
 ![](/vue-first-project/public/images/home.png)
 
+## Project setup
+```
+npm install
+```
+
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+### Compiles and minifies for production
+```
+npm run build
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
+
 ## Usage
-
-You can run this app by cloning it in your directory through your Command Line Interface:
-
-```
-$ git clone https://github.com/flborrelli/comment-box-vuejs.git
-```
-
-Enter into the directory and run the following commands in your Command Line Interface:
-
-```
-$ npm install
-```
-
-Serve with hot reload at localhost:8080:
-```
-$ npm run serve
-```
 
 - Runs the app in the development mode.
 
